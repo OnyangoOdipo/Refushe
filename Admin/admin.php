@@ -1,3 +1,32 @@
+<?php
+// Include the database connection file
+include('../Backend/db.php'); // Adjust the path as needed
+
+// Initialize variables
+$totalUsers = 0;
+$totalCourses = 0;
+
+// Fetch total users count
+$result = $conn->query("SELECT COUNT(*) AS count FROM users");
+if ($result) {
+    if ($row = $result->fetch_assoc()) {
+        $totalUsers = $row['count'];
+    }
+} else {
+    echo "Error fetching total users: " . $conn->error;
+}
+
+// Fetch total courses count
+$resultCourses = $conn->query("SELECT COUNT(*) AS count FROM courses"); // Adjust table name as needed
+if ($resultCourses) {
+    if ($rowCourses = $resultCourses->fetch_assoc()) {
+        $totalCourses = $rowCourses['count'];
+    }
+} else {
+    echo "Error fetching total courses: " . $conn->error;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +40,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
-
-
 </head>
-
 
 <body>
 
@@ -100,8 +126,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="nav-option logout">
                         <a href="../Backend/logout.php" class="logout-link">
                             <i class="fas fa-sign-out-alt"></i>
@@ -123,171 +147,89 @@
             <div class="box-container">
                 <div class="box box1">
                     <div class="text">
-                        <h2 class="topic-heading">300</h2>
-                        <h2 class="topic">Applications</h2>
+                        <h2 class="topic-heading"><?php echo $totalUsers; ?></h2>
+                        <h2 class="topic">Total Users</h2>
                     </div>
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="box box2">
                     <div class="text">
-                        <h2 class="topic-heading">80</h2>
-                        <h2 class="topic">Pending</h2>
+                        <h2 class="topic-heading"><?php echo $totalCourses; ?></h2>
+                        <h2 class="topic">Available Courses</h2>
                     </div>
-                    <i class="fa-solid fa-spinner"></i>
+                    <i class="fas fa-book"></i> <!-- Change the icon as needed -->
                 </div>
-                <div class="box box3">
-                    <div class="text">
-                        <h2 class="topic-heading">50</h2>
-                        <h2 class="topic">Approved</h2>
-                    </div>
-                    <i class="fa-solid fa-person-circle-check" style="color: black;"></i>
-                </div>
-                <div class="box box4">
-                    <div class="text">
-                        <h2 class="topic-heading">80</h2>
-                        <h2 class="topic">Declined</h2>
-                    </div>
-                    <i class="fa-solid fa-user-slash" style="color: black;"></i>
-                </div>
+                <!-- Additional boxes can be added similarly -->
             </div>
+
             <!-- User Data Section -->
             <div class="report-container" id="allapplications" style="display: none;">
                 <div class="report-header">
-                    <h1 class="recent-Entities">All Applications</h1>
+                    <h1 class="recent-Entities">All Users</h1>
                 </div>
 
                 <div class="report-body">
                     <div class="report-topic-heading">
                         <h3 class="t-op">Name</h3>
                         <h3 class="t-op">Email</h3>
-                        <h3 class="t-op">Course Applied For</h3>
-                        <h3 class="t-op">Application Status</h3>
-                        <h3 class="t-op">Date of Application</h3>
+                        <h3 class="t-op">ID Document</h3>
+                        <h3 class="t-op">Date Created</h3>
                     </div>
 
                     <div class="items">
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Ambiyo Ludwaro</h3>
-                            <h3 class="t-op-nextlvl">ambiyo@gmail.com</h3>
-                            <h3 class="t-op-nextlvl">Fashion And Design</h3>
-                            <h3 class="t-op-nextlvl label-tag">Approved</h3>
-                            <h3 class="t-op-nextlvl">2024-08-01</h3>
-                        </div>
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
-                            <h3 class="t-op-nextlvl">jludwaro@gmail.com</h3>
-                            <h3 class="t-op-nextlvl">Digital Literacy</h3>
-                            <h3 class="t-op-nextlvl label-tag">Under Review</h3>
-                            <h3 class="t-op-nextlvl">2024-08-02</h3>
-                        </div>
-
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Ambiyo Ludwaro</h3>
-                            <h3 class="t-op-nextlvl">ambiyo@gmail.com</h3>
-                            <h3 class="t-op-nextlvl">Fashion And Design</h3>
-                            <h3 class="t-op-nextlvl label-tag">Approved</h3>
-                            <h3 class="t-op-nextlvl">2024-08-01</h3>
-                        </div>
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
-                            <h3 class="t-op-nextlvl">jludwaro@gmail.com</h3>
-                            <h3 class="t-op-nextlvl">Digital Literacy</h3>
-                            <h3 class="t-op-nextlvl label-tag">Under Review</h3>
-                            <h3 class="t-op-nextlvl">2024-08-02</h3>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="report-container" id="reportsSection" style="display: none;">
-                <div class="report-header">
-                    <h1 class="recent-Entities">Application Reports</h1>
-                </div>
-
-                <div class="report-body">
-                    <div class="report-topic-heading">
-                        <h3 class="t-op">Report Type</h3>
-                        <h3 class="t-op">Download</h3>
-                    </div>
-
-                    <div class="items">
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Application Statistics</h3>
-                            <canvas id="applicationstats" width="400" height="200"></canvas>
-                        </div>
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Download Report</h3>
-                            <button class="view" onclick="downloadReport()">Download</button>
-                        </div>
+                        <?php
+                        $result = $conn->query("SELECT surname, other_names, email, id_document_name, created_at FROM users");
+                        if ($result) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<div class='item1'>
+                                    <h3 class='t-op-nextlvl'>{$row['surname']} {$row['other_names']}</h3>
+                                    <h3 class='t-op-nextlvl'>{$row['email']}</h3>
+                                    <h3 class='t-op-nextlvl'>{$row['id_document_name']}</h3>
+                                    <h3 class='t-op-nextlvl'>{$row['created_at']}</h3>
+                                </div>";
+                            }
+                        } else {
+                            echo "Error fetching users: " . $conn->error;
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
 
-
-
-            <!-- Recent Applications Section -->
+            <!-- Recent Users Section -->
             <div class="report-container">
                 <div class="report-header">
-                    <h1 class="recent-Entities">Recent Course Applications</h1>
+                    <h1 class="recent-Entities">Recent Users</h1>
                     <button class="view">View All</button>
                 </div>
 
                 <div class="report-body">
                     <div class="report-topic-heading">
-                        <h3 class="t-op">Applicant Name</h3>
-                        <h3 class="t-op">Course</h3>
-                        <h3 class="t-op">Application Date</h3>
-                        <h3 class="t-op">Status</h3>
+                        <h3 class="t-op">Name</h3>
+                        <h3 class="t-op">Email</h3>
+                        <h3 class="t-op">Date Created</h3>
                     </div>
 
                     <div class="items">
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
-                            <h3 class="t-op-nextlvl">Digital Literacy</h3>
-                            <h3 class="t-op-nextlvl">2024-08-03</h3>
-                            <h3 class="t-op-nextlvl label-tag">Pending</h3>
-                        </div>
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl">Nelly Karani</h3>
-                            <h3 class="t-op-nextlvl">Fashion and Design</h3>
-                            <h3 class="t-op-nextlvl">2024-08-04</h3>
-                            <h3 class="t-op-nextlvl label-tag">Approved</h3>
-                        </div>
-                        <!-- More static visitor records can go here -->
+                        <?php
+                        // Optionally limit to recent users or filter as needed
+                        $result = $conn->query("SELECT surname, other_names, email, created_at FROM users ORDER BY created_at DESC LIMIT 5");
+                        if ($result) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<div class='item1'>
+                                    <h3 class='t-op-nextlvl'>{$row['surname']} {$row['other_names']}</h3>
+                                    <h3 class='t-op-nextlvl'>{$row['email']}</h3>
+                                    <h3 class='t-op-nextlvl'>{$row['created_at']}</h3>
+                                </div>";
+                            }
+                        } else {
+                            echo "Error fetching recent users: " . $conn->error;
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
-    <script src="admin.js"></script> <!-- Include your JavaScript file -->
-
-    <script>
-        // JavaScript for handling settings modal
-        document.getElementById("settingsButton").addEventListener("click", function() {
-            document.getElementById("settingsModal").style.display = "block";
-        });
-
-        document.querySelector(".close-btn").addEventListener("click", function() {
-            document.getElementById("settingsModal").style.display = "none";
-        });
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById("settingsModal")) {
-                document.getElementById("settingsModal").style.display = "none";
-            }
-        };
-
-        // Save settings function (for demonstration purposes)
-        document.getElementById("saveSettings").addEventListener("click", function() {
-            const theme = document.getElementById("themeToggle").value;
-            const notificationsEnabled = document.getElementById("notificationsToggle").checked;
-            alert(`Settings Saved! \nTheme: ${theme} \nNotifications: ${notificationsEnabled ? 'Enabled' : 'Disabled'}`);
-            document.getElementById("settingsModal").style.display = "none";
-        });
-    </script>
-</body>
-
-</html>
+    <script src="admin.js"></script> <!-- Include your Java

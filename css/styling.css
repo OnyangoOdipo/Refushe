@@ -1,0 +1,166 @@
+﻿
+/*colors*/
+:root {
+    --color-primary: #101c75;
+    --color-white: #fff;
+}
+
+/*Nav tabs */
+.tab-7 .flex-column .nav-link.active {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+}
+/* validation errors
+--------------------------*/
+.contact-form .form-control.input-validation-error,
+.form-material .form-control.input-validation-error,
+.form-control.form-control-line.input-validation-error,
+.input-validation-error, .field-validation-error {
+    border-color: red;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+    .field-validation-error:before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f071";
+        display: inline-block;
+        padding-right: 3px;
+        vertical-align: middle;
+        font-weight: 900;
+    }
+
+.contact-form .form-control.valid,
+.form-material .form-control.valid,
+.form-control.form-control-line.valid,
+.valid {
+    border-color: green;
+}
+
+    .valid + span:after {
+        font-family: "Font Awesome 5 Free";
+        content: '\f058';
+        color: green;
+        display: block;
+        padding-top: 3px;
+        vertical-align: middle;
+        font-weight: 900;
+    }
+
+.side-navigation > li.menu-list.nav-active {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.appoint-top {
+    display: none !important;
+}
+
+.dis-progress {
+    position: fixed;
+    width: 65%;
+    z-index: 3;
+    top: 65px;
+    left: 600px;
+}
+
+@media only screen and (max-width: 1600px) {
+    .dis-progress {
+        left: 540px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .dis-progress {
+        left: 500px;
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .dis-progress {
+        left: 460px;
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .dis-progress {
+        left: 280px;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .dis-progress {
+        left: 240px;
+    }
+
+    .section-title h2 {
+        font-size: 2rem !important;
+    }
+
+        .section-title h2::before, .section-title h2::after {
+            width: 1.875rem !important;
+        }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .appointment {
+        display: none !important;
+    }
+
+    .appoint-top {
+        display: block !important;
+    }
+
+    .page-head {
+        margin-bottom: 25px !important;
+    }
+
+    .dis-progress {
+        left: 5px;
+        width: 95%;
+        background-color: #EBECF5;
+    }
+
+    .sidebar-open .dis-progress {
+        left: 245px;
+        width: 60%;
+        background-color: #EBECF5;
+    }
+
+    .section-title h2 {
+        font-size: 1.125rem !important;
+        padding-left: 0 !important;
+    }
+
+        .section-title h2::before, .section-title h2::after {
+            width: 0 !important;
+        }
+
+    .mobile-nav {
+        bottom: unset !important;
+    }
+
+        .mobile-nav > .hvr-underline-from-center, .mobile-nav > .get-started {
+            display: block !important;
+        }
+
+    .nav-tabs.nav {
+        flex-wrap: wrap !important;
+    }
+}
+
+.proceed-par {
+    position: relative;
+}
+
+.proceed-par .proceed {
+    position : fixed;
+    right : 2rem;
+    z-index: 3;
+
+}

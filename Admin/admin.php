@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
 
-   
+
 </head>
 
 
@@ -64,10 +64,10 @@
                     </div>
 
                     <div class="nav-option option3" id="reportsOption">
-                      <i class="fa-solid fa-people-roof"></i>
-                      <h3>Reports</h3>
-                  </div>
-                    
+                        <i class="fa-solid fa-people-roof"></i>
+                        <h3>Reports</h3>
+                    </div>
+
                     <div class="nav-option option6">
                         <i class="fas fa-cog"></i>
                         <h3>Settings</h3>
@@ -76,12 +76,12 @@
                             <div class="settings-modal-content">
                                 <span class="close-btn">&times;</span>
                                 <h2>Settings</h2>
-                        
+
                                 <div class="settings-option">
                                     <label for="profilePic">Change Profile Picture:</label>
                                     <input type="file" id="profilePic" accept="image/*">
                                 </div>
-                        
+
                                 <div class="settings-option">
                                     <label for="themeToggle">Theme:</label>
                                     <select id="themeToggle">
@@ -89,22 +89,24 @@
                                         <option value="dark">Dark</option>
                                     </select>
                                 </div>
-                        
+
                                 <div class="settings-option">
                                     <label for="notificationsToggle">Enable Notifications:</label>
                                     <input type="checkbox" id="notificationsToggle">
                                 </div>
-                        
+
                                 <button id="saveSettings" class="save-btn">Save Settings</button>
                             </div>
                         </div>
                     </div>
-     
 
-                    
+
+
                     <div class="nav-option logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <h3>Logout</h3>
+                        <a href="../Backend/logout.php" class="logout-link">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <h3>Logout</h3>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -145,14 +147,15 @@
                         <h2 class="topic-heading">80</h2>
                         <h2 class="topic">Declined</h2>
                     </div>
-                    <i class="fa-solid fa-user-slash" style="color: black;"></i>                </div>
+                    <i class="fa-solid fa-user-slash" style="color: black;"></i>
+                </div>
             </div>
-               <!-- User Data Section -->
-               <div class="report-container" id="allapplications" style="display: none;">
+            <!-- User Data Section -->
+            <div class="report-container" id="allapplications" style="display: none;">
                 <div class="report-header">
                     <h1 class="recent-Entities">All Applications</h1>
                 </div>
-            
+
                 <div class="report-body">
                     <div class="report-topic-heading">
                         <h3 class="t-op">Name</h3>
@@ -161,37 +164,37 @@
                         <h3 class="t-op">Application Status</h3>
                         <h3 class="t-op">Date of Application</h3>
                     </div>
-            
-                    <div class="items">
-                      <div class="item1">
-                        <h3 class="t-op-nextlvl">Ambiyo Ludwaro</h3>
-                        <h3 class="t-op-nextlvl">ambiyo@gmail.com</h3>
-                        <h3 class="t-op-nextlvl">Fashion And Design</h3>
-                        <h3 class="t-op-nextlvl label-tag">Approved</h3>
-                        <h3 class="t-op-nextlvl">2024-08-01</h3>
-                    </div>
-                    <div class="item1">
-                        <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
-                        <h3 class="t-op-nextlvl">jludwaro@gmail.com</h3>
-                        <h3 class="t-op-nextlvl">Digital Literacy</h3>
-                        <h3 class="t-op-nextlvl label-tag">Under Review</h3>
-                        <h3 class="t-op-nextlvl">2024-08-02</h3>
-                    </div>
 
-                    <div class="item1">
-                        <h3 class="t-op-nextlvl">Ambiyo Ludwaro</h3>
-                        <h3 class="t-op-nextlvl">ambiyo@gmail.com</h3>
-                        <h3 class="t-op-nextlvl">Fashion And Design</h3>
-                        <h3 class="t-op-nextlvl label-tag">Approved</h3>
-                        <h3 class="t-op-nextlvl">2024-08-01</h3>
-                    </div>
-                    <div class="item1">
-                        <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
-                        <h3 class="t-op-nextlvl">jludwaro@gmail.com</h3>
-                        <h3 class="t-op-nextlvl">Digital Literacy</h3>
-                        <h3 class="t-op-nextlvl label-tag">Under Review</h3>
-                        <h3 class="t-op-nextlvl">2024-08-02</h3>
-                    </div>
+                    <div class="items">
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl">Ambiyo Ludwaro</h3>
+                            <h3 class="t-op-nextlvl">ambiyo@gmail.com</h3>
+                            <h3 class="t-op-nextlvl">Fashion And Design</h3>
+                            <h3 class="t-op-nextlvl label-tag">Approved</h3>
+                            <h3 class="t-op-nextlvl">2024-08-01</h3>
+                        </div>
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
+                            <h3 class="t-op-nextlvl">jludwaro@gmail.com</h3>
+                            <h3 class="t-op-nextlvl">Digital Literacy</h3>
+                            <h3 class="t-op-nextlvl label-tag">Under Review</h3>
+                            <h3 class="t-op-nextlvl">2024-08-02</h3>
+                        </div>
+
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl">Ambiyo Ludwaro</h3>
+                            <h3 class="t-op-nextlvl">ambiyo@gmail.com</h3>
+                            <h3 class="t-op-nextlvl">Fashion And Design</h3>
+                            <h3 class="t-op-nextlvl label-tag">Approved</h3>
+                            <h3 class="t-op-nextlvl">2024-08-01</h3>
+                        </div>
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
+                            <h3 class="t-op-nextlvl">jludwaro@gmail.com</h3>
+                            <h3 class="t-op-nextlvl">Digital Literacy</h3>
+                            <h3 class="t-op-nextlvl label-tag">Under Review</h3>
+                            <h3 class="t-op-nextlvl">2024-08-02</h3>
+                        </div>
 
                     </div>
                 </div>
@@ -200,13 +203,13 @@
                 <div class="report-header">
                     <h1 class="recent-Entities">Application Reports</h1>
                 </div>
-            
+
                 <div class="report-body">
                     <div class="report-topic-heading">
                         <h3 class="t-op">Report Type</h3>
                         <h3 class="t-op">Download</h3>
                     </div>
-            
+
                     <div class="items">
                         <div class="item1">
                             <h3 class="t-op-nextlvl">Application Statistics</h3>
@@ -219,43 +222,43 @@
                     </div>
                 </div>
             </div>
-            
-            
-            
+
+
+
             <!-- Recent Applications Section -->
-                <div class="report-container">
-                  <div class="report-header">
-                      <h1 class="recent-Entities">Recent Course Applications</h1>
-                      <button class="view">View All</button>
-                  </div>
-              
-                  <div class="report-body">
-                      <div class="report-topic-heading">
-                          <h3 class="t-op">Applicant Name</h3>
-                          <h3 class="t-op">Course</h3>
-                          <h3 class="t-op">Application Date</h3>
-                          <h3 class="t-op">Status</h3>
-                      </div>
-              
-                      <div class="items">
-                          <div class="item1">
-                              <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
-                              <h3 class="t-op-nextlvl">Digital Literacy</h3>
-                              <h3 class="t-op-nextlvl">2024-08-03</h3>
-                              <h3 class="t-op-nextlvl label-tag">Pending</h3>
-                          </div>
-                          <div class="item1">
-                              <h3 class="t-op-nextlvl">Nelly Karani</h3>
-                              <h3 class="t-op-nextlvl">Fashion and Design</h3>
-                              <h3 class="t-op-nextlvl">2024-08-04</h3>
-                              <h3 class="t-op-nextlvl label-tag">Approved</h3>
-                          </div>
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Entities">Recent Course Applications</h1>
+                    <button class="view">View All</button>
+                </div>
+
+                <div class="report-body">
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Applicant Name</h3>
+                        <h3 class="t-op">Course</h3>
+                        <h3 class="t-op">Application Date</h3>
+                        <h3 class="t-op">Status</h3>
+                    </div>
+
+                    <div class="items">
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl">Jasmine Ludwaro</h3>
+                            <h3 class="t-op-nextlvl">Digital Literacy</h3>
+                            <h3 class="t-op-nextlvl">2024-08-03</h3>
+                            <h3 class="t-op-nextlvl label-tag">Pending</h3>
+                        </div>
+                        <div class="item1">
+                            <h3 class="t-op-nextlvl">Nelly Karani</h3>
+                            <h3 class="t-op-nextlvl">Fashion and Design</h3>
+                            <h3 class="t-op-nextlvl">2024-08-04</h3>
+                            <h3 class="t-op-nextlvl label-tag">Approved</h3>
+                        </div>
                         <!-- More static visitor records can go here -->
                     </div>
                 </div>
             </div>
 
-         
+
         </div>
     </div>
 
@@ -288,4 +291,3 @@
 </body>
 
 </html>
-

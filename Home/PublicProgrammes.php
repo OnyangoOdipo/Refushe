@@ -19,8 +19,80 @@
     <link href="../assets/css/card.css" rel="stylesheet">
     <link href="../assets/css/styles.css" rel="stylesheet">
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
 
     <style>
+
+        .card-grid {
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner-img {
+            height: 150px; /* Adjust this height as needed */
+            background-image: url('logo.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-img {
+            width: 50px; /* Adjust this size as needed */
+            height: 50px;
+            border-radius: 50%;
+            margin: -25px auto 15px auto;
+            background-color: #fff;
+            padding: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            padding: 10px;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 5px 15px;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
         .page-item.active .page-link {
             background: #052766 !important;
             border-color: #052766 !important;
@@ -178,186 +250,17 @@
                     </form>
                 </div>
                 <div class="row">
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">Cert</span>
-                                </p>
-                                <h5 class="name">
-                                    Digital Literacy
-                                </h5>
-                                <p>6 months</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="PublicProgramDetails%3Fid=265882b9-e636-427b-bfc2-00c63ef4db14.html"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">Cert</span>
-                                </p>
-                                <h5 class="name">
-                                    Fashion and Design
-                                </h5>
-                                <p>2 YEARS</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="PublicProgramDetails%3Fid=f9551422-2880-4932-a9ee-03734dc5ac9b.html"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">Cert</span>
-                                </p>
-                                <h5 class="name">
-                                    ENTREPRENEURSHIP
-                                </h5>
-                                <p>1 year</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="PublicProgramDetails%3Fid=7ff91d9e-083d-4125-b4cb-05063a9198dd.html"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">CERT</span>
-                                </p>
-                                <h5 class="name">
-                                    MANAGEMENT STUDIES
-                                </h5>
-                                </p>
-                                <p>1 YEAR</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="PublicProgramDetails%3Fid=a31b3e4b-9609-4a08-b468-08ff38e1d646.html"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">CERT</span>
-                                </p>
-                                <h5 class="name">
-                                    ARTISAN COLECTIVE
-                                </h5>
-                                <p class="description">
-                                </p>
-                                <p>2 YEARS</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="PublicProgramDetails%3Fid=c219caa2-cea5-4fa9-84d4-0d5bd0094e53.html"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">CERT</span>
-                                </p>
-                                <h5 class="name">
-                                    WEB DEVELOPMENT
-                                </h5>
-                                
-                                <p>6 MONTHS</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="PublicProgramDetails%3Fid=081b4e97-0849-4cc3-95e9-0ddbb49c3ae9.html"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">CERT</span>
-                                </p>
-                                <h5 class="name">
-                                    ICT
-                                </h5>
-                                <p class="description">
-                                <p>6 MONTHS</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="PublicProgramDetails%3Fid=06d320e6-68a3-44ee-8f4a-107f6588dc0a.html"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-grid h-100 justify-content-center">
-                                <div class='banner-img'></div>
-                                <img src="book.png" alt='profile image' class="profile-img">
-                                <p>
-                                    <span class="badge badge-primary">CERT</span>
-                                </p>
-                                <h5 class="name">
-                                    MANAGEMENT
-                                </h5>
-                                <p class="description">
-                                <p>1 YEAR</p>
-                                <div class="col-12" style="width:100%;position:absolute; bottom:0;">
-                                    <a href="book.png"
-                                       class='text-inf text-center'>
-                                        <strong>View More <i class="fa fa-angle-right"></i></strong>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row">
+                        <?php include '../Backend/fetch_courses.php'; ?>
+                    </div>
                   
                     <div class="col-md-12 d-flex justify-content-center mt-5">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                                                    <li class="page-item" id="data_1"><a class="page-link" href="PublicProgrammes%3FpageNumber=1.html">1</a> </li>
-                                
-                                    <li class="page-item" id="data_2"><a class="page-link" href="PublicProgrammes%3FpageNumber=2.html">2</a></li>
-                                    <li class="page-item" id="data_3"><a class="page-link" href="PublicProgrammes%3FpageNumber=3.html">3</a></li>
-                                    <li class="page-item" id="data_4"><a class="page-link" href="PublicProgrammes%3FpageNumber=4.html">4</a></li>
-                                    <li class="page-item" id="data_5"><a class="page-link" href="PublicProgrammes%3FpageNumber=5.html">5</a></li>
-                                    <li class="page-item" id="data_6"><a class="page-link" href="PublicProgrammes%3FpageNumber=6.html">6</a></li>
-                                    <li class="page-item" id="data_7"><a class="page-link" href="PublicProgrammes%3FpageNumber=7.html">7</a></li>
-                                    <li class="page-item" id="data_8"><a class="page-link" href="PublicProgrammes%3FpageNumber=8.html">8</a></li>
-                                    <li class="page-item" id="data_9"><a class="page-link" href="PublicProgrammes%3FpageNumber=9.html">9</a></li>
-                                    <li class="page-item" id="data_10"><a class="page-link" href="PublicProgrammes%3FpageNumber=10.html">10</a></li>
-
-                                    <li class="page-item"><a class="page-link" href="PublicProgrammes.html#">...</a> </li>
-                                    <li class="page-item" id="data_12"><a class="page-link" href="PublicProgrammes%3FpageNumber=12.html">12</a> </li>
-                                                                    <li class="page-item"><a class="page-link" href="PublicProgrammes%3FpageNumber=2.html">Next</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" id="pagination">
+                <!-- Pagination links will be dynamically inserted here -->
+            </ul>
+        </nav>
+    </div>
                 </div>
                 <input hidden id="pageIndex" value="1" />
             </div>
@@ -366,6 +269,33 @@
 
     </div>
 </section>
+
+<!-- Course Details Modal -->
+<div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="courseModalLabel">Course Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body" id="modalCourseDetails">
+                <!-- Course details will be injected here -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="applyButton">Apply</button>
+                <input type="hidden" id="modalCourseId"> <!-- Hidden input for storing course ID -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
         <section id="contact" class="contact">
             <div class="container">
@@ -437,10 +367,73 @@
 
     <a href="PublicProgrammes.html#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.view-more').forEach(button => {
+        button.addEventListener('click', function() {
+            const courseId = this.dataset.courseId;
 
+            // Store the courseId in the hidden input inside the modal
+            document.getElementById('modalCourseId').value = courseId;
+            
+            // Make an AJAX call to fetch course details based on courseId
+            fetch(`../Backend/fetch_courses.php?id=${courseId}&json=true`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        const course = data[0];
 
+                        // Populate the modal with course details
+                        document.getElementById('modalCourseDetails').innerHTML = `
+                            <h5>${course.name}</h5>
+                            <p>${course.description}</p>
+                            <p>Duration: ${course.duration}</p>
+                            <p>Certificate: ${course.certificate_type}</p>
+                        `;
 
+                        // Show the modal
+                        const courseModal = new bootstrap.Modal(document.getElementById('courseModal'));
+                        courseModal.show();
+                    } else {
+                        alert('Course details not found.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
 
+    document.getElementById('applyButton').addEventListener('click', function() {
+        const courseId = document.getElementById('modalCourseId').value;
+
+        // Check if the user is logged in
+        fetch('../Backend/check_login.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.logged_in) {
+                    fetch('../Backend/apply_course.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ course_id: courseId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Successfully applied for the course!');
+                            const courseModal = bootstrap.Modal.getInstance(document.getElementById('courseModal'));
+                            courseModal.hide();
+                        } else {
+                            alert('Failed to apply for the course. Please try again.');
+                        }
+                    });
+                } else {
+                    alert('You must be logged in to apply for a course.');
+                }
+            });
+    });
+});
+</script>
 
     <script>
     $(document).ready(function () {
@@ -521,6 +514,10 @@
 
 
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     
     

@@ -24,15 +24,18 @@ body {
 header {
   height: 70px;
   width: 100vw;
-  padding: 0 30px;
+  padding: 10px 20px;
   background-color: white;
   position: fixed;
-  z-index: 100;
+  top: 0; /* Ensure it's fixed to the top */
+  left: 0; /* Ensure it stretches to the left edge */
+  z-index: 1000; /* Keeps it above other elements */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 
 .logo {
   font-size: 24px;
@@ -57,12 +60,25 @@ header {
   justify-content: center;
 }
 
+.searchbar {
+  display: flex;
+  align-items: center;
+}
+
 .searchbar2 {
   display: none;
 }
 
+.searchbar.active .searchbar2 {
+  display: flex;
+}
+
+
 .logosec {
-  gap: 60px;
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .searchbar input {
@@ -122,8 +138,16 @@ header {
   position: relative;
 }
 .navcontainer {
-  height: 100%;
+  position: fixed; /* Fix to the side */
+  top: 70px; /* Offset by header height */
+  left: 0;
+  width: 250px; /* Adjust as needed */
+  height: calc(100vh - 70px); /* Full height minus header */
+  background-color: var(--background-color1); /* Background color */
+  z-index: 999; /* Just below header */
+  overflow-y: auto; /* Scrollable if content overflows */
 }
+
 .nav {
   background-color: white;
   height: 100%;
@@ -406,6 +430,29 @@ header {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .logosec {
+    flex-direction: column;
+    align-items: flex-start; /* Align items to start for small screens */
+  }
+
+  .navbar {
+    position: fixed;
+    top: 60px; /* Adjust based on your layout */
+    left: 0;
+    width: 100%;
+    display: none;
+  }
+
+  .navbar.active {
+    display: block;
+  }
+
+  .menuicn {
+    display: block; /* Ensure icon is visible */
+  }
 }
 
 @media screen and (max-width: 900px) {

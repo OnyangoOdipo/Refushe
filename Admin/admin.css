@@ -587,41 +587,53 @@ header {
 .t-op-nextlvl {
   margin: 0;
 }
-
-/* Button Styling */
-.btn-accept, .btn-reject {
-  padding: 5px 10px;
-  margin: 0 5px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
+/* Buttons */
 .btn-accept {
-  background-color: #28a745; /* Green for Accept */
-  color: #fff;
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 .btn-reject {
-  background-color: #dc3545; /* Red for Reject */
-  color: #fff;
-}
-
-/* Status Label Styling */
-.label-tag {
+  background-color: #dc3545; /* Red */
+  color: white;
+  border: none;
   padding: 5px 10px;
-  border-radius: 5px;
-  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
-.pending {
-  background-color: #ffc107; /* Yellow for Pending */
+.btn-accept:hover, .btn-reject:hover {
+  opacity: 0.9;
 }
 
-.approved {
-  background-color: #28a745; /* Green for Approved */
+/* Status Labels */
+.label-tag-approved {
+  color: white;
+  background-color: #28a745; /* Green */
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  width: 80px;
 }
 
-.declined {
-  background-color: #dc3545; /* Red for Declined */
+.label-tag-rejected {
+  color: white;
+  background-color: #dc3545; /* Red */
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  width: 80px;
+}
+
+.label-tag-pending {
+  color: black;
+  background-color: #ffc107; /* Yellow */
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  width: 80px;
 }

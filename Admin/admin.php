@@ -300,7 +300,7 @@ $conn->close();
                 </div>
             </div>
 
-         <!-- User Application Section -->
+    <!-- User Application Section -->
 <div class="report-container">
     <div class="report-header">
         <h1 class="recent-Entities">User Applications</h1>
@@ -318,29 +318,30 @@ $conn->close();
         <div class="items">
             <?php foreach ($applications as $application): ?>
                 <div class="item1">
-                    <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['surname'] . ' ' . $application['other_names']); ?></h3>
-                    <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['course_name']); ?></h3>
-                    <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['application_date']); ?></h3>
-                    <h3 class="t-op-nextlvl label-tag <?php echo strtolower(htmlspecialchars($application['status'])); ?>">
-                        <?php echo htmlspecialchars($application['status']); ?>
-                    </h3>
-                    <div class="t-op-nextlvl">
-                        <?php if ($application['status'] === 'Pending'): ?>
-                            <form action="buttons.php" method="POST" class="application-actions">
-                                <input type="hidden" name="application_id" value="<?php echo isset($application['id']) ? htmlspecialchars($application['id']) : ''; ?>">
-                                <button type="submit" name="action" value="accept" class="btn-accept">Accept</button>
-                                <button type="submit" name="action" value="reject" class="btn-reject">Reject</button>
-                            </form>
-                        <?php else: ?>
-                            <!-- If the application is already approved or rejected, no actions are needed -->
-                            <p class="t-op-nextlvl">No further actions</p>
-                        <?php endif; ?>
-                    </div>
+                    <h3 class="t-op-nextlvl"><?php echo isset($application['surname'], $application['other_names']) ? htmlspecialchars($application['surname'] . ' ' . $application['other_names']) : 'No Name Available'; ?></h3>
+                    <h3 class="t-op-nextlvl"><?php echo isset($application['course_name']) ? htmlspecialchars($application['course_name']) : 'No Course Available'; ?></h3>
+                    <h3 class="t-op-nextlvl"><?php echo isset($application['application_date']) ? htmlspecialchars($application['application_date']) : 'No Date Available'; ?></h3>
+
+                    <?php
+                    // Determine the status and apply appropriate class for color
+                    $status = isset($application['status']) ? htmlspecialchars($application['status']) : 'Pending';
+                    $statusClass = ($status === 'Approved') ? 'label-tag-approved' :
+                                   (($status === 'Rejected') ? 'label-tag-rejected' : 'label-tag-pending');
+                    ?>
+                    <h3 class="t-op-nextlvl <?php echo $statusClass; ?>"><?php echo $status; ?></h3>
+
+                    <!-- Accept and Reject Buttons -->
+                    <form action="buttons.php" method="POST" class="application-actions">
+                        <input type="hidden" name="application_id" value="<?php echo isset($application['id']) ? htmlspecialchars($application['id']) : ''; ?>">
+                        <button type="submit" name="action" value="accept" class="btn-accept">Accept</button>
+                        <button type="submit" name="action" value="reject" class="btn-reject">Reject</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
 </div>
+
 
 
             <div class="report-container" id="allapplications" style="display: none;">

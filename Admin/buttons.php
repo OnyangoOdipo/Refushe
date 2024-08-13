@@ -15,28 +15,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($newStatus) {
             // Update the status in the database
             $stmt = $conn->prepare("UPDATE applications SET status = ? WHERE id = ?");
+            if ($stmt === false) {
+                die('Prepare failed: ' . htmlspecialchars($conn->error));
+            }
+            
             $stmt->bind_param('si', $newStatus, $applicationId);
 
             if ($stmt->execute()) {
                 // Success, redirect back to the application page
-                header("Location: admin.php?success=ApplicationUpdated");
+                header("Location:admin.php");
+                exit();
             } else {
-                // Error, redirect back with an error
-                header("Location: admin.php?error=DatabaseError");
+                // Error, output the error message
+                die("Error updating record: " . htmlspecialchars($conn->error));
             }
 
             $stmt->close();
         } else {
             // Invalid action
-            header("Location: admin.php?error=InvalidAction");
+            die("Invalid action");
         }
     } else {
         // Missing data
-        header("Location: admin.php?error=MissingData");
+        die("Missing data");
     }
 
     $conn->close();
 } else {
     // Invalid request method
-    header("Location: admin.php?error=InvalidRequest");
+    die("Invalid request method");
 }
+?>

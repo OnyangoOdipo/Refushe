@@ -554,3 +554,74 @@ header {
       width: 100%; /* Full width for item text on small screens */
   }
 }
+
+
+/* Container and General Styling */
+.report-container {
+  margin: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.report-header h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.report-topic-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #e8e8e8;
+  border-bottom: 2px solid #ccc;
+}
+
+.item1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.t-op-nextlvl {
+  margin: 0;
+}
+
+/* Button Styling */
+.btn-accept, .btn-reject {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-accept {
+  background-color: #28a745; /* Green for Accept */
+  color: #fff;
+}
+
+.btn-reject {
+  background-color: #dc3545; /* Red for Reject */
+  color: #fff;
+}
+
+/* Status Label Styling */
+.label-tag {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.pending {
+  background-color: #ffc107; /* Yellow for Pending */
+}
+
+.approved {
+  background-color: #28a745; /* Green for Approved */
+}
+
+.declined {
+  background-color: #dc3545; /* Red for Declined */
+}

@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'];
 
         // Determine the new status based on the action
-        $newStatus = ($action === 'accept') ? 'Accepted' : (($action === 'reject') ? 'Rejected' : null);
+        $newStatus = ($action === 'accept') ? 'Approved' : (($action === 'reject') ? 'Rejected' : null);
 
         if ($newStatus) {
             // Update the status in the database
@@ -19,25 +19,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($stmt->execute()) {
                 // Success, redirect back to the application page
-                header("Location: your_application_page.php?success=ApplicationUpdated");
+                header("Location: admin.php?success=ApplicationUpdated");
             } else {
                 // Error, redirect back with an error
-                header("Location: your_application_page.php?error=DatabaseError");
+                header("Location: admin.php?error=DatabaseError");
             }
 
             $stmt->close();
         } else {
             // Invalid action
-            header("Location: your_application_page.php?error=InvalidAction");
+            header("Location: admin.php?error=InvalidAction");
         }
     } else {
         // Missing data
-        header("Location: your_application_page.php?error=MissingData");
+        header("Location: admin.php?error=MissingData");
     }
 
     $conn->close();
 } else {
     // Invalid request method
-    header("Location: your_application_page.php?error=InvalidRequest");
+    header("Location: admin.php?error=InvalidRequest");
 }
-?>

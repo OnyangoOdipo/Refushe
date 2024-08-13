@@ -300,7 +300,7 @@ $conn->close();
                 </div>
             </div>
 
-            <!-- User Application Section -->
+         <!-- User Application Section -->
 <div class="report-container">
     <div class="report-header">
         <h1 class="recent-Entities">User Applications</h1>
@@ -321,19 +321,27 @@ $conn->close();
                     <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['surname'] . ' ' . $application['other_names']); ?></h3>
                     <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['course_name']); ?></h3>
                     <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['application_date']); ?></h3>
-                    <h3 class="t-op-nextlvl label-tag"><?php echo htmlspecialchars($application['status']); ?></h3>
+                    <h3 class="t-op-nextlvl label-tag <?php echo strtolower(htmlspecialchars($application['status'])); ?>">
+                        <?php echo htmlspecialchars($application['status']); ?>
+                    </h3>
                     <div class="t-op-nextlvl">
-                        <form action="buttons.php" method="POST" class="application-actions">
-                            <input type="hidden" name="application_id" value="<?php echo isset($application['id']) ? htmlspecialchars($application['id']) : ''; ?>">
-                            <button type="submit" name="action" value="accept" class="btn-accept">Accept</button>
-                            <button type="submit" name="action" value="reject" class="btn-reject">Reject</button>
-                        </form>
+                        <?php if ($application['status'] === 'Pending'): ?>
+                            <form action="buttons.php" method="POST" class="application-actions">
+                                <input type="hidden" name="application_id" value="<?php echo isset($application['id']) ? htmlspecialchars($application['id']) : ''; ?>">
+                                <button type="submit" name="action" value="accept" class="btn-accept">Accept</button>
+                                <button type="submit" name="action" value="reject" class="btn-reject">Reject</button>
+                            </form>
+                        <?php else: ?>
+                            <!-- If the application is already approved or rejected, no actions are needed -->
+                            <p class="t-op-nextlvl">No further actions</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
 </div>
+
 
             <div class="report-container" id="allapplications" style="display: none;">
                 <div class="report-header">

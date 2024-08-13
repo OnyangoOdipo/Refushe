@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['email'] = $email;
 
-            header("Location: dashboard.php");
+            header("Location: ../Home.php");
             exit();
         } else {
             echo "Invalid password!";

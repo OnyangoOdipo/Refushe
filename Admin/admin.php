@@ -98,7 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-function downloadCSV($applications) {
+function downloadCSV($applications)
+{
     $filename = "applications_report.csv";
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment;filename="' . $filename . '"');
@@ -137,7 +138,7 @@ $conn->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="admin.css">
- 
+
 </head>
 
 <body>
@@ -188,10 +189,10 @@ $conn->close();
                     </div>
 
                     <div class="nav-option option3" id="reportsOption">
-                      <i class="fa-solid fa-people-roof"></i>
-                      <h3>Reports</h3>
+                        <i class="fa-solid fa-people-roof"></i>
+                        <h3>Reports</h3>
                     </div>
-                    
+
 
                     <div class="nav-option option6" id="settingsButton">
                         <i class="fas fa-cog"></i>
@@ -226,7 +227,7 @@ $conn->close();
                         </div>
                     </div>
 
-     
+
                     <div class="nav-option logout">
                         <i class="fas fa-sign-out-alt"></i>
                         <h3>Logout</h3>
@@ -299,32 +300,61 @@ $conn->close();
                 </div>
             </div>
 
-               <!-- User Application Section -->
+            <!-- User Application Section -->
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Entities">User Applications</h1>
+                </div>
+
+                <div class="report-body">
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Application ID</h3>
+                        <h3 class="t-op">Status</h3>
+                        <h3 class="t-op">Actions</h3>
+                    </div>
+
+                    <div class="items">
+                        <?php foreach ($applications as $application): ?>
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl"><?php echo isset($application['id']) ? htmlspecialchars($application['id']) : 'Not Available'; ?></h3>
+                                <h3 class="t-op-nextlvl label-tag"><?php echo isset($application['status']) ? htmlspecialchars($application['status']) : 'Not Available'; ?></h3>
+                                <div class="t-op-nextlvl">
+                                    <form action="buttons.php" method="POST" class="application-actions">
+                                        <input type="hidden" name="application_id" value="<?php echo isset($application['id']) ? htmlspecialchars($application['id']) : ''; ?>">
+                                        <button type="submit" name="action" value="accept" class="btn-accept">Accept</button>
+                                        <button type="submit" name="action" value="reject" class="btn-reject">Reject</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
             <div class="report-container" id="allapplications" style="display: none;">
                 <div class="report-header">
                     <h1 class="recent-Entities">All Applications</h1>
                 </div>
 
                 <div class="report-body">
-                <div class="report-topic-heading">
-                    <h3 class="t-op">Name</h3>
-                    <h3 class="t-op">Email</h3>
-                    <h3 class="t-op">Course Applied For</h3>
-                    <h3 class="t-op">Application Status</h3>
-                    <h3 class="t-op">Date of Application</h3>
-                </div>
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Name</h3>
+                        <h3 class="t-op">Email</h3>
+                        <h3 class="t-op">Course Applied For</h3>
+                        <h3 class="t-op">Application Status</h3>
+                        <h3 class="t-op">Date of Application</h3>
+                    </div>
 
-                <div class="items">
-                    <?php foreach ($applications as $application): ?>
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['surname'] . ' ' . $application['other_names']); ?></h3>
-                            <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['email']); ?></h3>
-                            <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['course_name']); ?></h3>
-                            <h3 class="t-op-nextlvl label-tag"><?php echo htmlspecialchars($application['status']); ?></h3>
-                            <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['application_date']); ?></h3>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+                    <div class="items">
+                        <?php foreach ($applications as $application): ?>
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['surname'] . ' ' . $application['other_names']); ?></h3>
+                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['email']); ?></h3>
+                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['course_name']); ?></h3>
+                                <h3 class="t-op-nextlvl label-tag"><?php echo htmlspecialchars($application['status']); ?></h3>
+                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['application_date']); ?></h3>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
 
@@ -360,7 +390,7 @@ $conn->close();
                         </div>
 
                         <!-- Button to download report -->
-                         <div class="item1">
+                        <div class="item1">
                             <form method="post" action="admin.php">
                                 <button class="view" type="submit" name="download_csv">Download CSV</button>
                             </form>
@@ -371,36 +401,36 @@ $conn->close();
                 </div>
             </div>
 
-            
+
             <!-- Recent Applications Section -->
             <div class="report-container">
                 <div class="report-header">
                     <h1 class="recent-Entities">Recent Course Applications</h1>
                     <button class="view">View All</button>
                 </div>
-            
+
                 <div class="report-body">
-                <div class="report-topic-heading">
-                    <h3 class="t-op">Applicant Name</h3>
-                    <h3 class="t-op">Course</h3>
-                    <h3 class="t-op">Application Date</h3>
-                    <h3 class="t-op">Status</h3>
-                </div>
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Applicant Name</h3>
+                        <h3 class="t-op">Course</h3>
+                        <h3 class="t-op">Application Date</h3>
+                        <h3 class="t-op">Status</h3>
+                    </div>
 
-                <div class="items">
-                    <?php foreach ($applications as $application): ?>
-                        <div class="item1">
-                            <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['surname'] . ' ' . $application['other_names']); ?></h3>
-                            <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['course_name']); ?></h3>
-                            <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['application_date']); ?></h3>
-                            <h3 class="t-op-nextlvl label-tag"><?php echo htmlspecialchars($application['status']); ?></h3>
-                        </div>
-                    <?php endforeach; ?>
+                    <div class="items">
+                        <?php foreach ($applications as $application): ?>
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['surname'] . ' ' . $application['other_names']); ?></h3>
+                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['course_name']); ?></h3>
+                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['application_date']); ?></h3>
+                                <h3 class="t-op-nextlvl label-tag"><?php echo htmlspecialchars($application['status']); ?></h3>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
-            </div>
 
-                <!-- Users Section -->
+            <!-- Users Section -->
             <div class="report-container" id="usersSection" style="display: none;">
                 <div class="report-header">
                     <h1 class="recent-Entities">All Users</h1>
@@ -462,8 +492,8 @@ $conn->close();
         // Reports Section
         document.getElementById("reportsOption").addEventListener("click", function() {
             document.getElementById("reportsSection").style.display = "block";
-            document.getElementById("usersSection").style.display = "none";  // Hide other sections if necessary
-            document.getElementById("allapplications").style.display = "none";  // Hide other sections if necessary
+            document.getElementById("usersSection").style.display = "none"; // Hide other sections if necessary
+            document.getElementById("allapplications").style.display = "none"; // Hide other sections if necessary
         });
 
         // Settings
@@ -549,22 +579,20 @@ $conn->close();
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-    const menuIcon = document.getElementById('menuicn');
-    const navContainer = document.querySelector('.navcontainer');
+            const menuIcon = document.getElementById('menuicn');
+            const navContainer = document.querySelector('.navcontainer');
 
-    menuIcon.addEventListener('click', () => {
-        navContainer.classList.toggle('active');
-    });
+            menuIcon.addEventListener('click', () => {
+                navContainer.classList.toggle('active');
+            });
 
-    // Optional: Hide sidebar when clicking outside
-    document.addEventListener('click', (event) => {
-        if (!navContainer.contains(event.target) && !menuIcon.contains(event.target)) {
-            navContainer.classList.remove('active');
-        }
-    });
-});
-
-
+            // Optional: Hide sidebar when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!navContainer.contains(event.target) && !menuIcon.contains(event.target)) {
+                    navContainer.classList.remove('active');
+                }
+            });
+        });
     </script>
 </body>
 

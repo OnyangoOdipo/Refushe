@@ -1,31 +1,27 @@
 <?php
 include '../Backend/db.php';
 
-header('Content-Type: application/json');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $application_id = $_POST['application_id'];
+    $action = $_POST['action'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the raw POST data
-    $data = json_decode(file_get_contents('php://input'), true);
+    $status = ($action === 'Approve') ? 'Approved' : 'Declined';
 
-    if (isset($data['id']) && isset($data['status'])) {
-        $applicationId = $data['id'];
-        $newStatus = $data['status'];
+    $sql = "UPDATE applications SET status = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $status, $application_id);
 
-        $stmt = $conn->prepare("UPDATE applications SET status = ? WHERE id = ?");
-        $stmt->bind_param('si', $newStatus, $applicationId);
-
-        if ($stmt->execute()) {
-            echo json_encode(['success' => true]);
-        } else {
-            echo json_encode(['success' => false, 'error' => $stmt->error]);
-        }
-
-        $stmt->close();
+    if ($stmt->execute()) {
+        echo "Record updated successfully";
     } else {
-        echo json_encode(['success' => false, 'error' => 'Missing ID or status']);
+        echo "Error updating record: " . $stmt->error;
     }
-    $conn->close();
-} else {
-    echo json_encode(['success' => false, 'error' => 'Invalid request method']);
+
+    $stmt->close();
 }
+
+$conn->close();
+
+header("Location: admin.php");
+exit();
 ?>

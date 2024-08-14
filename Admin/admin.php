@@ -40,7 +40,7 @@ if ($resultDeclined->num_rows > 0) {
 }
 
 // Query to fetch all applications with correct column names
-$sqlApplications = "SELECT u.surname, u.other_names, u.email, c.name AS course_name, a.status, a.application_date
+$sqlApplications = "SELECT a.id, u.surname, u.other_names, u.email, c.name AS course_name, a.status, a.application_date
                     FROM applications a
                     JOIN users u ON a.user_id = u.id
                     JOIN courses c ON a.course_id = c.id";
@@ -315,34 +315,33 @@ $conn->close();
                         <h3 class="t-op">Actions</h3>
                     </div>
 
-        <div class="items">
-            <?php foreach ($applications as $application): ?>
-                <div class="item1" id="application-<?php echo htmlspecialchars($application['id']); ?>">
-                    <h3 class="t-op-nextlvl"><?php echo isset($application['surname'], $application['other_names']) ? htmlspecialchars($application['surname'] . ' ' . $application['other_names']) : 'No Name Available'; ?></h3>
-                    <h3 class="t-op-nextlvl"><?php echo isset($application['course_name']) ? htmlspecialchars($application['course_name']) : 'No Course Available'; ?></h3>
-                    <h3 class="t-op-nextlvl"><?php echo isset($application['application_date']) ? htmlspecialchars($application['application_date']) : 'No Date Available'; ?></h3>
+                    <div class="items">
+    <?php foreach ($applications as $application): ?>
+        <div class="item1">
+            <h3 class="t-op-nextlvl"><?php echo isset($application['surname'], $application['other_names']) ? htmlspecialchars($application['surname'] . ' ' . $application['other_names']) : 'No Name Available'; ?></h3>
+            <h3 class="t-op-nextlvl"><?php echo isset($application['course_name']) ? htmlspecialchars($application['course_name']) : 'No Course Available'; ?></h3>
+            <h3 class="t-op-nextlvl"><?php echo isset($application['application_date']) ? htmlspecialchars($application['application_date']) : 'No Date Available'; ?></h3>
 
-                    <?php
-                    $status = isset($application['status']) ? htmlspecialchars($application['status']) : 'Pending';
-                    $statusClass = 'label-tag-pending';
-                    if ($status === 'Approved') {
-                        $statusClass = 'label-tag-approved';
-                    } elseif ($status === 'Rejected') {
-                        $statusClass = 'label-tag-rejected';
-                    }
-                    ?>
-                    <h3 class="t-op-nextlvl <?php echo $statusClass; ?>"><?php echo $status; ?></h3>
+            <?php
+            $status = isset($application['status']) ? htmlspecialchars($application['status']) : 'Pending';
+            $statusClass = 'label-tag-pending';
+            if ($status === 'Approved') {
+                $statusClass = 'label-tag-approved';
+            } elseif ($status === 'Declined') { // Ensure this matches the status values used in your database
+                $statusClass = 'label-tag-rejected';
+            }
+            ?>
+            <h3 class="t-op-nextlvl <?php echo $statusClass; ?>"><?php echo $status; ?></h3>
 
-                    <form method="post">
-                        <button class="btn-accept">Accept</button>
-                        <button class="btn-reject">Reject</button>
-                    </form>
-                </div>
+            <form method="post" action="update_status.php">
+                <input type='hidden' name='application_id' value='<?php echo htmlspecialchars($application["id"]); ?>'>
+                <input type='submit' name='action' value='Approve'>
+                <input type='submit' name='action' value='Decline'>
+            </form>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </div>
 
 
             <!-- All Applications Section -->

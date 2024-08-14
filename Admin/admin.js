@@ -138,4 +138,54 @@ saveSettingsButton.addEventListener('click', () => {
     localStorage.setItem('theme', themeToggle.value);
     localStorage.setItem('notifications', notificationsToggle.checked);
 });
+// Function to update the application status via AJAX
+function updateApplicationStatus(applicationId, newStatus) {
+    fetch('update_Status.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: applicationId,
+            status: newStatus
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the status in the UI
+            const statusElement = document.querySelector(`#application-${applicationId} h3.t-op-nextlvl`);
+            statusElement.textContent = newStatus;
+
+            // Update the status label class
+            statusElement.className = 't-op-nextlvl ' + (newStatus === 'Approved' ? 'label-tag-approved' : (newStatus === 'Rejected' ? 'label-tag-rejected' : 'label-tag-pending'));
+
+            alert('Status updated successfully');
+        } else {
+            alert('Failed to update status');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the status');
+    });
+}
+
+document.querySelectorAll('.btn-accept').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();  // Prevent the form from submitting
+        const applicationId = this.closest('.item1').id.replace('application-', '');
+        updateApplicationStatus(applicationId, 'Approved');
+    });
+});
+
+document.querySelectorAll('.btn-reject').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();  // Prevent the form from submitting
+        const applicationId = this.closest('.item1').id.replace('application-', '');
+        updateApplicationStatus(applicationId, 'Rejected');
+    });
+});
+
+
 

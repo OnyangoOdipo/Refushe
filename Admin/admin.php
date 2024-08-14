@@ -300,7 +300,7 @@ $conn->close();
                 </div>
             </div>
 
-    <!-- User Application Section -->
+           <!-- User Application Section -->
 <div class="report-container">
     <div class="report-header">
         <h1 class="recent-Entities">User Applications</h1>
@@ -317,24 +317,25 @@ $conn->close();
 
         <div class="items">
             <?php foreach ($applications as $application): ?>
-                <div class="item1">
+                <div class="item1" id="application-<?php echo htmlspecialchars($application['id']); ?>">
                     <h3 class="t-op-nextlvl"><?php echo isset($application['surname'], $application['other_names']) ? htmlspecialchars($application['surname'] . ' ' . $application['other_names']) : 'No Name Available'; ?></h3>
                     <h3 class="t-op-nextlvl"><?php echo isset($application['course_name']) ? htmlspecialchars($application['course_name']) : 'No Course Available'; ?></h3>
                     <h3 class="t-op-nextlvl"><?php echo isset($application['application_date']) ? htmlspecialchars($application['application_date']) : 'No Date Available'; ?></h3>
 
                     <?php
-                    // Determine the status and apply appropriate class for color
                     $status = isset($application['status']) ? htmlspecialchars($application['status']) : 'Pending';
-                    $statusClass = ($status === 'Approved') ? 'label-tag-approved' :
-                                   (($status === 'Rejected') ? 'label-tag-rejected' : 'label-tag-pending');
+                    $statusClass = 'label-tag-pending';
+                    if ($status === 'Approved') {
+                        $statusClass = 'label-tag-approved';
+                    } elseif ($status === 'Rejected') {
+                        $statusClass = 'label-tag-rejected';
+                    }
                     ?>
                     <h3 class="t-op-nextlvl <?php echo $statusClass; ?>"><?php echo $status; ?></h3>
 
-                    <!-- Accept and Reject Buttons -->
-                    <form action="buttons.php" method="POST" class="application-actions">
-                        <input type="hidden" name="application_id" value="<?php echo isset($application['id']) ? htmlspecialchars($application['id']) : ''; ?>">
-                        <button type="submit" name="action" value="accept" class="btn-accept">Accept</button>
-                        <button type="submit" name="action" value="reject" class="btn-reject">Reject</button>
+                    <form method="post">
+                        <button class="btn-accept">Accept</button>
+                        <button class="btn-reject">Reject</button>
                     </form>
                 </div>
             <?php endforeach; ?>
@@ -343,6 +344,7 @@ $conn->close();
 </div>
 
 
+            <!-- All Applications Section -->
 
             <div class="report-container" id="allapplications" style="display: none;">
                 <div class="report-header">

@@ -300,24 +300,24 @@ $conn->close();
                 </div>
             </div>
 
-    <!-- User Application Section -->
-<div class="report-container">
-    <div class="report-header">
-        <h1 class="recent-Entities">User Applications</h1>
-    </div>
+            <!-- User Application Section -->
+            <div class="report-container" id="userOption">
+                <div class="report-header">
+                    <h1 class="recent-Entities">User Applications</h1>
+                </div>
 
-    <div class="report-body">
-        <div class="report-topic-heading">
-            <h3 class="t-op">Applicant Name</h3>
-            <h3 class="t-op">Course</h3>
-            <h3 class="t-op">Application Date</h3>
-            <h3 class="t-op">Status</h3>
-            <h3 class="t-op">Actions</h3>
-        </div>
+                <div class="report-body">
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Applicant Name</h3>
+                        <h3 class="t-op">Course</h3>
+                        <h3 class="t-op">Application Date</h3>
+                        <h3 class="t-op">Status</h3>
+                        <h3 class="t-op">Actions</h3>
+                    </div>
 
-        <div class="items">
-            <?php foreach ($applications as $application): ?>
-                <div class="item1">
+                    <div class="items">
+                        <?php foreach ($applications as $application): ?>
+                            <div class="item1">
                     <h3 class="t-op-nextlvl"><?php echo isset($application['surname'], $application['other_names']) ? htmlspecialchars($application['surname'] . ' ' . $application['other_names']) : 'No Name Available'; ?></h3>
                     <h3 class="t-op-nextlvl"><?php echo isset($application['course_name']) ? htmlspecialchars($application['course_name']) : 'No Course Available'; ?></h3>
                     <h3 class="t-op-nextlvl"><?php echo isset($application['application_date']) ? htmlspecialchars($application['application_date']) : 'No Date Available'; ?></h3>
@@ -337,10 +337,11 @@ $conn->close();
                         <button type="submit" name="action" value="reject" class="btn-reject">Reject</button>
                     </form>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</div>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -411,35 +412,6 @@ $conn->close();
                         </div>
 
 
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Recent Applications Section -->
-            <div class="report-container">
-                <div class="report-header">
-                    <h1 class="recent-Entities">Recent Course Applications</h1>
-                    <button class="view">View All</button>
-                </div>
-
-                <div class="report-body">
-                    <div class="report-topic-heading">
-                        <h3 class="t-op">Applicant Name</h3>
-                        <h3 class="t-op">Course</h3>
-                        <h3 class="t-op">Application Date</h3>
-                        <h3 class="t-op">Status</h3>
-                    </div>
-
-                    <div class="items">
-                        <?php foreach ($applications as $application): ?>
-                            <div class="item1">
-                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['surname'] . ' ' . $application['other_names']); ?></h3>
-                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['course_name']); ?></h3>
-                                <h3 class="t-op-nextlvl"><?php echo htmlspecialchars($application['application_date']); ?></h3>
-                                <h3 class="t-op-nextlvl label-tag"><?php echo htmlspecialchars($application['status']); ?></h3>
-                            </div>
-                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

@@ -334,10 +334,11 @@ $conn->close();
             <h3 class="t-op-nextlvl <?php echo $statusClass; ?>"><?php echo $status; ?></h3>
 
             <form method="post" action="update_status.php">
-                <input type='hidden' name='application_id' value='<?php echo htmlspecialchars($application["id"]); ?>'>
-                <input type='submit' name='action' value='Approve'>
-                <input type='submit' name='action' value='Decline'>
-            </form>
+    <input type='hidden' name='application_id' value='<?php echo htmlspecialchars($application["id"]); ?>'>
+    <input type='submit' name='action' value='Approve' style='background-color: green; color: white; border: none; padding: 5px 10px; font-size: 14px; cursor: pointer;'>
+    <input type='submit' name='action' value='Decline' style='background-color: red; color: white; border: none; padding: 5px 10px; font-size: 14px; cursor: pointer;'>
+</form>
+
         </div>
     <?php endforeach; ?>
 </div>

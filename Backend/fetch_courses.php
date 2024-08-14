@@ -31,7 +31,7 @@ if (isset($_GET['json']) && $_GET['json'] == 'true' && isset($_GET['id'])) {
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <!-- Banner Image -->
-                    <img src="../logo.png" class="card-img-top" alt="Banner Image">
+                    <img src="../assets/images/logo.png" class="card-img-top" alt="Banner Image">
 
                     <!-- Card Body -->
                     <div class="card-body text-center">

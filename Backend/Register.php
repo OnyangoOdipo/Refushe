@@ -16,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-    $sql = "INSERT INTO users (surname, other_names, email, id_document_name, id_document_number, password_hash) 
-            VALUES ('$surname', '$other_names', '$email', '$id_document_name', '$id_document_number', '$password_hash')";
+    $sql = "INSERT INTO users (surname, other_names, email, id_document_name, id_document_number, password_hash, roles) 
+            VALUES ('$surname', '$other_names', '$email', '$id_document_name', '$id_document_number', '$password_hash', 'user')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Registration successful!";

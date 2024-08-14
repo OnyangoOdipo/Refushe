@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +16,81 @@
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/card.css" rel="stylesheet">
     <link href="assets/css/styles.css" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
   
 
     <style>
+
+.card-grid {
+            position: relative;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner-img {
+            height: 150px; 
+            background-image: url('logo.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: -25px auto 15px auto;
+            background-color: #fff;
+            padding: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            padding: 10px;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 5px 15px;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
         .page-item.active .page-link {
             background: #052766 !important;
             border-color: #052766 !important;
@@ -143,39 +218,43 @@
     <input type="hidden" id="primary-color" value=#052766 />
     <input type="hidden" id="secondary-color" value=#9c6f1c />
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center">
-        <div class="container d-flex align-items-center">
+  
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
 
-            <div class="row col-lg-12 mb-5">
-                <div class="col-lg-4">
-                        <h2>
-                            <a href="index.html" class="text-dark font-weight-bold">
-                                    <span>RefuSHE Kenya</span>
-
-
-                            </a>
-                        </h2>
-                    
-
-                </div>
-                <div class="col-lg-8">
-                    <nav class="nav-menu d-none d-lg-block border-1 ms-auto">
-
-                        <ul class="d-flex justify-content-end align-items-center">
-                            <li class="hvr-underline-from-center active " id="home"><a href="Home/PublicProgrammes.html">Find Courses</a></li>
-
-                            <li class="get-started"><a id="createAccountMain" href="Home/Register.html">Create Account</a></li>
-                                                        <li class="get-started "><a id="loginMain" href="Home/Login.html">Log In</a></li>
-                        </ul>
-                    </nav>
-
-                </div>
-
+        <div class="row col-lg-12 mb-5">
+            <div class="col-lg-4">
+                <h2>
+                    <a href="index.html" class="text-dark font-weight-bold">
+                        <span>RefuSHE Kenya</span>
+                    </a>
+                </h2>
             </div>
-
-
+            <div class="col-lg-8">
+                <nav class="nav-menu d-none d-lg-block border-1 ms-auto">
+                    <ul class="d-flex justify-content-end align-items-center">
+                        <li class="hvr-underline-from-center active " id="home">
+                            <a href="Home/PublicProgrammes.php">Find Courses</a>
+                        </li>
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <li class="get-started">
+                                <a id="loginMain" href="Backend/logout.php">Log Out</a>
+                            </li>
+                        <?php else: ?>
+                            <li class="get-started">
+                                <a id="createAccountMain" href="Home/Register.html">Create Account</a>
+                            </li>
+                            <li class="get-started">
+                                <a id="loginMain" href="Home/Login.html">Log In</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </header>
+    </div>
+</header>
+
     <main>
      
 <section id="hero" class="d-flex align-items-center">
@@ -190,69 +269,66 @@
                     <h2 data-aos="fade-up" data-aos-delay="400">We are proud to offer vocational courses to refugee girls, empowering them with essential skills for a brighter future. No formal qualifications are required to join our programs. We believe in providing opportunities for all, regardless of your educational background. Join us to unlock your potential and create new opportunities for yourself and your community.</h2>
                 <div data-aos="fade-up" data-aos-delay="800">
                         <a class="btn-get-started text-white border-0 scrollto mr-3 mb-3" id="createAccount" href="Home/Register.html">Create Account</a>
-                    <a class="btn-get-started scrollto" id="login" href="Home/PublicProgrammes.html">View Courses</a>
+                    <a class="btn-get-started scrollto" id="login" href="Home/PublicProgrammes.php">View Courses</a>
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-                <img src="img2.png" class="img-fluid animated" alt="Kibabii University">
+                <img src="img2.png" class="img-fluid animated" alt="RefuShe">
             </div>
         </div>
     </div>
 
 </section>
-<section id="services" class="services">
-    <div class="container">
+    <section id="services" class="services">
+        <div class="container">
 
-        <div class="section-title" data-aos="fade-up">
-            <h2 class="md-6">How to Apply for our Courses</h2>
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="md-6">How to Apply for our Courses</h2>
 
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon"><i class="bx bxl-dribbble">1</i></div>
+                        <h4 class="title"><a href="index.html">Step 1: Find a Course</a></h4>
+                        <p class="description">Search for a course to enroll to</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon"><i class="bx bx-file">2</i></div>
+                        <h4 class="title"><a href="index.html">Step 2: Create Account</a></h4>
+                        <p class="description">Create a Login Account Profile</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon"><i class="bx bx-tachometer">3</i></div>
+                        <h4 class="title"><a href="index.html">Step 3: Submit your Application</a></h4>
+                        <p class="description">Update Application Profile and Submit your Application</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="row">
-            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon"><i class="bx bxl-dribbble">1</i></div>
-                    <h4 class="title"><a href="index.html">Step 1: Find a Course</a></h4>
-                    <p class="description">Search for a course to enroll to</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon"><i class="bx bx-file">2</i></div>
-                    <h4 class="title"><a href="index.html">Step 2: Create Account</a></h4>
-                    <p class="description">Create a Login Account Profile</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon"><i class="bx bx-tachometer">3</i></div>
-                    <h4 class="title"><a href="index.html">Step 3: Submit your Application</a></h4>
-                    <p class="description">Update Application Profile and Submit your Application</p>
-                </div>
-            </div>
-
-
-
-        </div>
-
-    </div>
-</section>
         <section id="features" class="features">
             <div class="container">
                 <div class="section-title" data-aos="fade-up">
-                    <h2>MAY 2023 INTAKE OPEN</h2>
+                    <h2>SEPTEMBER 2024 INTAKE OPEN</h2>
                 </div>
                 <div class="row">
-                    <?php include 'Backend/fetch_courses.php'; ?>
+                    <?php include 'Backend/fetch_courses_home.php'; ?>
                 </div>
                 <div class="text-center">
-                    <a class="btn btn-info border-0 rounded-pill" href="Home/PublicProgrammes.html">View More Courses</a>
+                    <a class="btn btn-info border-0 rounded-pill" href="Home/PublicProgrammes.php">View More Courses</a>
                 </div>
             </div>
         </section>
-        
+
         <section id="contact" class="contact">
             <div class="container">
                 <div class="section-title" data-aos="fade-up">
@@ -313,7 +389,6 @@
 
 
     <a href="Home.php" class="carbon--back-to-top"><i class="carbon--back-to-top"></i></a>
-
 
     <script>
     $(document).ready(function () {

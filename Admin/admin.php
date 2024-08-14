@@ -1,5 +1,11 @@
 <?php
 include '../Backend/db.php';
+session_start();
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../Home/Login.html");
+    exit();
+}
 
 // Initialize counters
 $totalApplications = 0;
@@ -228,10 +234,14 @@ $conn->close();
                     </div>
 
 
-                    <div class="nav-option logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <h3>Logout</h3>
-                    </div>
+                    <!-- Logout Button Form -->
+                    <form id="logoutForm" action="../Backend/logout.php" method="post" style="display: inline;">
+                        <button type="submit" class="nav-option logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <h3>Logout</h3>
+                        </button>
+                    </form>
+
                 </div>
             </nav>
         </div>

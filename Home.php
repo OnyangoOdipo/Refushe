@@ -26,70 +26,67 @@ session_start();
   
 
     <style>
-
-.card-grid {
-            position: relative;
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
             background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .banner-img {
-            height: 150px; 
-            background-image: url('logo.png');
-            background-size: cover;
-            background-position: center;
+            width: 100%;
+            height: 60px;
+            background-color: #ffffff;
+            border-radius: 10px 10px 0 0;
         }
 
         .profile-img {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
             border-radius: 50%;
-            margin: -25px auto 15px auto;
-            background-color: #fff;
-            padding: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: block;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 15px;
         }
 
         .card-body {
-            padding: 15px;
             text-align: center;
         }
 
+        .card-body .badge {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
         .card-title {
-            font-size: 1.25rem;
+            font-size: 18px;
+            font-weight: bold;
             margin-bottom: 10px;
         }
 
         .card-text {
-            font-size: 1rem;
-            color: #6c757d;
+            font-size: 14px;
+            color: #555;
             margin-bottom: 15px;
         }
 
         .card-footer {
-            padding: 10px;
-            background-color: #f8f9fa;
-            text-align: center;
-            border-top: 1px solid #e9ecef;
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
         }
 
-        .btn-primary {
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-            padding: 5px 15px;
-            font-size: 0.875rem;
+        .card-footer .view-more {
+            color: #007bff;
             text-decoration: none;
+            font-weight: bold;
         }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
+        .card-footer .view-more:hover {
+            text-decoration: underline;
         }
         .page-item.active .page-link {
             background: #052766 !important;

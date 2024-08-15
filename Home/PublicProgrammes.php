@@ -27,56 +27,67 @@
 
 
     <style>
-
         .card-grid {
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
             background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .banner-img {
-            height: 150px; /* Adjust this height as needed */
-            background-image: url('logo.png');
-            background-size: cover;
-            background-position: center;
+            width: 100%;
+            height: 60px;
+            background-color: #ffffff;
+            border-radius: 10px 10px 0 0;
         }
 
         .profile-img {
-            width: 50px; /* Adjust this size as needed */
-            height: 50px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
             border-radius: 50%;
-            margin: -25px auto 15px auto;
-            background-color: #fff;
-            padding: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: block;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 15px;
         }
 
         .card-body {
-            padding: 15px;
             text-align: center;
         }
 
+        .card-body .badge {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
         .card-title {
-            font-size: 1.25rem;
+            font-size: 18px;
+            font-weight: bold;
             margin-bottom: 10px;
         }
 
         .card-text {
-            font-size: 1rem;
-            color: #6c757d;
+            font-size: 14px;
+            color: #555;
             margin-bottom: 15px;
         }
 
         .card-footer {
-            padding: 10px;
-            background-color: #f8f9fa;
-            text-align: center;
-            border-top: 1px solid #e9ecef;
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .card-footer .view-more {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card-footer .view-more:hover {
+            text-decoration: underline;
         }
 
         .btn-primary {
@@ -183,16 +194,12 @@
         {
             document.documentElement.style.cssText = "--clr-primary: "+primColor;
         }
-
-      
-
     </script>
 </head>
 
 <body>
     <input type="hidden" id="primary-color" value=#052766 />
     <input type="hidden" id="secondary-color" value=#9c6f1c />
- 
 
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center">
@@ -202,238 +209,206 @@
                         <h2>
                             <a href="../index.html" class="text-dark font-weight-bold">
                                     <span>RefuSHE Kenya</span>
-
-
                             </a>
                         </h2>
-                    
                 </div>
                 <div class="col-lg-8">
                     <nav class="nav-menu d-none d-lg-block border-1 ms-auto">
-
                         <ul class="d-flex justify-content-end align-items-center">
                             <li class="hvr-underline-from-center active " id="home"><a href="PublicProgrammes.html">Find Courses</a></li>
-
                             <li class="get-started"><a id="createAccountMain" href="Register.html">Create Account</a></li>
-                                                        <li class="get-started "><a id="loginMain" href="Login.html">Log In</a></li>
+                            <li class="get-started "><a id="loginMain" href="Login.html">Log In</a></li>
                         </ul>
                     </nav>
-
                 </div>
-
             </div>
-
-
         </div>
     </header>
     <main>
         
-<section>
-    <div class="container-fluid">
-
-
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="page-head">
-                    <h4 class="mt-2 mb-2 client-text">Find All courses</h4>
-                </div>
-
-                <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                    <form method="get">
-                        <div class="input-group">
-                            <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light" name="searchString" id="searchString">
-                            <div class="input-group-append">
-                                <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="row">
-                        <?php include '../Backend/fetch_courses.php'; ?>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="page-head">
+                        <h4 class="mt-2 mb-2 client-text">Find All courses</h4>
                     </div>
-                  
-                    <div class="col-md-12 d-flex justify-content-center mt-5">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination" id="pagination">
-                <!-- Pagination links will be dynamically inserted here -->
-            </ul>
-        </nav>
-    </div>
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                        <form method="get">
+                            <div class="input-group">
+                                <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light" name="searchString" id="searchString">
+                                <div class="input-group-append">
+                                    <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="row">
+                            <?php include '../Backend/fetch_courses.php'; ?>
+                        </div>
+                    
+                        <div class="col-md-12 d-flex justify-content-center mt-5">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination" id="pagination">
+                                    <!-- Pagination links will be dynamically inserted here -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <input hidden id="pageIndex" value="1" />
                 </div>
-                <input hidden id="pageIndex" value="1" />
+                <div class="col-md-2"></div>
             </div>
-            <div class="col-md-2"></div>
         </div>
-
-    </div>
-</section>
+    </section>
 
 <!-- Course Details Modal -->
-<div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="courseModalLabel">Course Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+    <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="courseModalLabel">Course Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-            <!-- Modal Body -->
-            <div class="modal-body" id="modalCourseDetails">
-                <!-- Course details will be injected here -->
-            </div>
+                <div class="modal-body" id="modalCourseDetails">
+                    <!-- Course details will be injected here -->
+                </div>
 
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="applyButton">Apply</button>
-                <input type="hidden" id="modalCourseId"> <!-- Hidden input for storing course ID -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="applyButton">Apply</button>
+                    <input type="hidden" id="modalCourseId">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-        <section id="contact" class="contact">
-            <div class="container">
-
-                <div class="section-title" data-aos="fade-up">
-                    <h2>Contact Us</h2>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-about">
+                        <h3>RefuSHE Kenya</h3>
+                        <p> Education For Empowerment </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info">
+                        <div>
+                        </div>
+                        <div class="ml-2">
+                        </div>
+                        <div class="ml-3">
+                        </div>
+                        <div class="ml-4">
+                            <i class="ri-mail-send-line"></i>
+                            <p>Refushe.org</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="row">
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="contact-about">
-                            <h3>RefuSHE Kenya</h3>
-                            <p> Education For Empowerment </p>
+                <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                    <form method="post" id="enquiry" role="form" class="php-email-form" action="https://application.refushe.org/Enquiry/SaveEnquiry">
+                        <div class="form-group">
+                            <input type="text" name="Name" class="form-control" id="Name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 12 chars" />
+                            <div class="validate"></div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                        <div class="info">
-                            <div>
-                            </div>
-                            <div class="ml-2">
-                            </div>
-                            <div class="ml-3">
-                            </div>
-
-                            <div class="ml-4">
-                                <i class="ri-mail-send-line"></i>
-                                <p>Refushe.org</p>
-                            </div>
-
-
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="Email" id="Email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                            <div class="validate"></div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-                        <form method="post" id="enquiry" role="form" class="php-email-form" action="https://application.refushe.org/Enquiry/SaveEnquiry">
-                            <div class="form-group">
-                                <input type="text" name="Name" class="form-control" id="Name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 12 chars" />
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="Email" id="Email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="form-control" name="Phone" id="Phone" placeholder="Your Phone number" data-rule="minlen:10" data-msg="Please enter a valid phone" />
-                                <div class="validate"></div>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" name="Message" id="Message" rows="5" data-rule="minlen:30" data-msg="Please write something for us not less than 30 chracters" placeholder="Message"></textarea>
-                                <div class="validate"></div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit" id="sendMessage">Send Message</button></div>
-                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8CDAy67nCthLtdW4kvview2r24ABn5Ga_3Tb6gtAuaFGGsTHsgA0hb_TSXwDjld0VKxnVhnUDVq84HecUMv-68YqJe0dKErVv40vzn-ouEFtkEghsqvIArkc_Jh9YYNV2yM1462fX4D9F84H2H65Gyc" /></form>
-                    </div>
-
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="Phone" id="Phone" placeholder="Your Phone number" data-rule="minlen:10" data-msg="Please enter a valid phone" />
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="Message" id="Message" rows="5" data-rule="minlen:30" data-msg="Please write something for us not less than 30 chracters" placeholder="Message"></textarea>
+                            <div class="validate"></div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center"><button type="submit" id="sendMessage">Send Message</button></div>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8CDAy67nCthLtdW4kvview2r24ABn5Ga_3Tb6gtAuaFGGsTHsgA0hb_TSXwDjld0VKxnVhnUDVq84HecUMv-68YqJe0dKErVv40vzn-ouEFtkEghsqvIArkc_Jh9YYNV2yM1462fX4D9F84H2H65Gyc" /></form>
                 </div>
 
             </div>
-        </section>
-    </main>
-    
 
+        </div>
+    </section>
+    </main>
     <a href="PublicProgrammes.html#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('.view-more').forEach(button => {
-        button.addEventListener('click', function() {
-            const courseId = this.dataset.courseId;
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.view-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const courseId = this.dataset.courseId;
 
-            // Store the courseId in the hidden input inside the modal
-            document.getElementById('modalCourseId').value = courseId;
-            
-            // Make an AJAX call to fetch course details based on courseId
-            fetch(`../Backend/fetch_courses.php?id=${courseId}&json=true`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.length > 0) {
-                        const course = data[0];
-
-                        // Populate the modal with course details
-                        document.getElementById('modalCourseDetails').innerHTML = `
-                            <h5>${course.name}</h5>
-                            <p>${course.description}</p>
-                            <p>Duration: ${course.duration}</p>
-                            <p>Certificate: ${course.certificate_type}</p>
-                        `;
-
-                        // Show the modal
-                        const courseModal = new bootstrap.Modal(document.getElementById('courseModal'));
-                        courseModal.show();
-                    } else {
-                        alert('Course details not found.');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        });
-    });
-
-    document.getElementById('applyButton').addEventListener('click', function() {
-        const courseId = document.getElementById('modalCourseId').value;
-
-        // Check if the user is logged in
-        fetch('../Backend/check_login.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.logged_in) {
-                    fetch('../Backend/apply_course.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ course_id: courseId })
-                    })
+                document.getElementById('modalCourseId').value = courseId;
+                
+                fetch(`../Backend/fetch_courses.php?id=${courseId}&json=true`)
                     .then(response => response.json())
                     .then(data => {
-                        if (data.success) {
-                            alert('Successfully applied for the course!');
-                            const courseModal = bootstrap.Modal.getInstance(document.getElementById('courseModal'));
-                            courseModal.hide();
+                        if (data.length > 0) {
+                            const course = data[0];
+
+                            document.getElementById('modalCourseDetails').innerHTML = `
+                                <h5>${course.name}</h5>
+                                <p>${course.description}</p>
+                                <p>Duration: ${course.duration}</p>
+                                <p>Certificate: ${course.certificate_type}</p>
+                            `;
+
+                            const courseModal = new bootstrap.Modal(document.getElementById('courseModal'));
+                            courseModal.show();
                         } else {
-                            alert('Failed to apply for the course. Please try again.');
+                            alert('Course details not found.');
                         }
-                    });
-                } else {
-                    alert('You must be logged in to apply for a course.');
-                }
+                    })
+                    .catch(error => console.error('Error:', error));
             });
+        });
+
+        document.getElementById('applyButton').addEventListener('click', function() {
+            const courseId = document.getElementById('modalCourseId').value;
+
+            fetch('../Backend/check_login.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logged_in) {
+                        fetch('../Backend/apply_course.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ course_id: courseId })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Successfully applied for the course!');
+                                const courseModal = bootstrap.Modal.getInstance(document.getElementById('courseModal'));
+                                courseModal.hide();
+                            } else {
+                                alert('Failed to apply for the course. Please try again.');
+                            }
+                        });
+                    } else {
+                        alert('You must be logged in to apply for a course.');
+                    }
+                });
+        });
     });
-});
-</script>
+    </script>
 
     <script>
     $(document).ready(function () {
@@ -519,8 +494,6 @@ document.addEventListener("DOMContentLoaded", function() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    
-    
     <script>
             debugger
             let pageIndex = document.getElementById("pageIndex");
@@ -533,14 +506,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 setActive.classList.add("active");
             }
     </script>
-
-    
-
-
-
 ;
 
 </body>
-
 </html>
-

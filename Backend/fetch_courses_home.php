@@ -8,9 +8,9 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '
         <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <!-- Banner Image -->
-                <img src="assets/images/logo.png" class="card-img-top" alt="Banner Image">
+            <div class="card-grid h-100 justify-content-center">
+            <div class="banner-img"></div>
+                <img src="book.png" alt="profile image" class="profile-img">
 
                 <!-- Card Body -->
                 <div class="card-body text-center">

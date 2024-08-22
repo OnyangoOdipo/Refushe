@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_document_number = $conn->real_escape_string($_POST['IdDocumentNumber']);
     $password = $_POST['Password'];
     $confirm_password = $_POST['ConfirmPassword'];
+    $role = $conn->real_escape_string($_POST['UserRole']); // Get the user role
 
     if ($password !== $confirm_password) {
         die("Passwords do not match!");
@@ -16,8 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
+    // Validate role
+    if (!in_array($role, ['user', 'admin'])) {
+        die("Invalid role selected!");
+    }
+
     $sql = "INSERT INTO users (surname, other_names, email, id_document_name, id_document_number, password_hash, roles) 
-            VALUES ('$surname', '$other_names', '$email', '$id_document_name', '$id_document_number', '$password_hash', 'user')";
+            VALUES ('$surname', '$other_names', '$email', '$id_document_name', '$id_document_number', '$password_hash', '$role')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Registration successful!";
